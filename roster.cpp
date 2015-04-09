@@ -2,7 +2,7 @@
 #include "form_add.h"
 Roster::Roster()
 {
-
+    timer = new QTimer();
 }
 
 void Roster::setU(QString url)

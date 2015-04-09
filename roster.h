@@ -1,7 +1,7 @@
 #ifndef Q_LIST_H
 #define Q_LIST_H
 #include <QString>
-
+#include <QTimer>
 class Roster
 {
 private:
@@ -9,6 +9,8 @@ private:
    QString Name;
    QString Adress;
    int Time;
+   QTimer *timer;
+
 
 
 public:
