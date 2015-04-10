@@ -1,9 +1,13 @@
 #ifndef Q_LIST_H
 #define Q_LIST_H
+
+#include <QObject>
 #include <QString>
 #include <QTimer>
-class Roster
+
+class Roster : public QObject
 {
+    Q_OBJECT
 private:
    QString Url;
    QString Name;
@@ -14,6 +18,8 @@ private:
 
 
 public:
+   explicit Roster();
+
     void setU(QString);
     void setN(QString);
     void setA(QString);
@@ -22,9 +28,15 @@ public:
     QString getN();
     QString getA();
     int getT();
-    Roster();
+
 public slots:
     void TimerStart();
+
+private slots:
+    void TimerTimeout();
+
+signals:
+    void timeout();
 };
 
 #endif // Q_LIST_H

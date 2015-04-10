@@ -1,6 +1,6 @@
 #include "roster.h"
 #include "form_add.h"
-Roster::Roster()
+Roster::Roster() : QObject()
 {
     timer = new QTimer();
 }
@@ -50,3 +50,7 @@ void Roster::TimerStart()
     this->timer->start(this->Time*60000);
 }
 
+void Roster::TimerTimeout()
+{
+    emit timeout();
+}
