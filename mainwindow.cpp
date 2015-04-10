@@ -25,14 +25,11 @@ void MainWindow::on_pushButton_4_clicked()
     emit Shov_Step();
 }
 
-void MainWindow::Slot(Roster Data)
+void MainWindow::Slot(Roster *Data)
 {
     model->listAdd(Data);
+    Data->TimerStart();
 }
-
-
-
-
 
 
 void MainWindow::on_pushButton_3_clicked()

@@ -9,7 +9,7 @@ class ListModel : public QAbstractItemModel
 {
     Q_OBJECT
 private:
-    QList <Roster> list;
+    QList <Roster*> list;
 
 public:
     explicit ListModel(QObject *parent = 0);
@@ -21,7 +21,7 @@ public:
 signals:
 
 public slots:
-    void listAdd(Roster);
+    void listAdd(Roster*);
     void listRemove(QModelIndex);
 
 };

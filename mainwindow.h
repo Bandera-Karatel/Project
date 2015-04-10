@@ -25,7 +25,7 @@ private slots:
 
     void on_pushButton_4_clicked();
 
-    void Slot(Roster);
+    void Slot(Roster*);
 
 
 

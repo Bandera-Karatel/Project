@@ -14,7 +14,6 @@ private:
 
 
 public:
-    friend class  Form_Add;
     void setU(QString);
     void setN(QString);
     void setA(QString);
@@ -24,6 +23,8 @@ public:
     QString getA();
     int getT();
     Roster();
+public slots:
+    void TimerStart();
 };
 
 #endif // Q_LIST_H

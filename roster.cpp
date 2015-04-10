@@ -45,4 +45,8 @@ int Roster::getT()
     return this->Time;
 }
 
+void Roster::TimerStart()
+{
+    this->timer->start(this->Time*60000);
+}
 

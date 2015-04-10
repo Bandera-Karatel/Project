@@ -26,7 +26,7 @@ private slots:
 
 signals:
    void Hide_Add();
-   void Add(Roster);
+   void Add(Roster*);
 };
 
 #endif // FORM_CREATE_H

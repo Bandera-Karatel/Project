@@ -20,11 +20,11 @@ void Form_Add::on_pushButton_2_clicked()
 
 void Form_Add::on_pushButton_clicked()
 {
-    Roster Data;
-    Data.setU(ui->lineEdit->text());
-    Data.setN(ui->lineEdit_2->text());
-    Data.setA(ui->lineEdit_3->text());
-    Data.setT(ui->lineEdit_4->text().toInt());
+    Roster *Data = new Roster();
+    Data->setU(ui->lineEdit->text());
+    Data->setN(ui->lineEdit_2->text());
+    Data->setA(ui->lineEdit_3->text());
+    Data->setT(ui->lineEdit_4->text().toInt());
     emit Add(Data);
     emit Hide_Add();
     ui->lineEdit->clear();

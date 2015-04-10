@@ -31,24 +31,24 @@ QVariant ListModel::data (const QModelIndex &index, int role) const
 
     if(index.isValid()) {
         if(Qt::DisplayRole == role){
-            Roster data;
+            Roster *data;
             data = list.at(index.row());
             switch (index.column()) {
             case 0:
-                return QString(data.getU());
+                return QString(data->getU());
             case 1:
-                return QString(data.getN());
+                return QString(data->getN());
             case 2:
-               return QString(data.getA());
+               return QString(data->getA());
             case 3:
-                return QString("%1").arg(data.getT());
+                return QString("%1").arg(data->getT());
             }
         }
     }
     return QVariant();
 }
 
-void ListModel::listAdd(Roster Data)
+void ListModel::listAdd(Roster *Data)
 {
     int row = list.count();
     beginInsertRows(QModelIndex(),row,row);
@@ -59,9 +59,11 @@ void ListModel::listAdd(Roster Data)
 void ListModel::listRemove(QModelIndex Index)
 {
         int row = Index.row();
-        beginRemoveRows(QModelIndex(),row,row);\
-        this->list.removeAt(row);
+        beginRemoveRows(QModelIndex(),row,row);
+        Roster *r = this->list.takeAt(row);
+        delete(r);
         endRemoveRows();
+
 }
 
 
