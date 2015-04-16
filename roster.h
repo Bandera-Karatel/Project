@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QString>
 #include <QTimer>
+#include <QDateTime>
 
 class Roster : public QObject
 {
@@ -14,6 +15,7 @@ private:
    QString Adress;
    int Time;
    QTimer *timer;
+   QDateTime LastModified;
 
 
 

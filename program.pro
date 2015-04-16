@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,13 +17,15 @@ SOURCES += main.cpp\
     form_step.cpp \
     listmodel.cpp \
     roster.cpp \
-    form_add.cpp
+    form_add.cpp \
+    thread.cpp
 
 HEADERS  += mainwindow.h \
     form_step.h \
     listmodel.h \
     roster.h \
-    form_add.h
+    form_add.h \
+    thread.h
 
 FORMS    += mainwindow.ui \
     form_step.ui \
