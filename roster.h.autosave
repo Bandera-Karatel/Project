@@ -15,7 +15,7 @@ private:
    QString Adress;
    int Time;
    QTimer *timer;
-   QDateTime LastModified;
+   QString LastModified;
 
 
 
@@ -26,12 +26,10 @@ public:
     void setN(QString);
     void setA(QString);
     void setT(int);
-    void setL(QDateTime);
     QString getU();
     QString getN();
     QString getA();
     int getT();
-    QDateTime getL();
 
 public slots:
     void TimerStart();

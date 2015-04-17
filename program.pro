@@ -18,14 +18,16 @@ SOURCES += main.cpp\
     listmodel.cpp \
     roster.cpp \
     form_add.cpp \
-    thread.cpp
+    thread.cpp \
+    processingmanager.cpp
 
 HEADERS  += mainwindow.h \
     form_step.h \
     listmodel.h \
     roster.h \
     form_add.h \
-    thread.h
+    thread.h \
+    processingmanager.h
 
 FORMS    += mainwindow.ui \
     form_step.ui \
