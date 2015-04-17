@@ -14,6 +14,6 @@ void Thread::getLastModified(QUrl url)
 {
         QNetworkRequest request(url);
         QNetworkReply *reply = manager.head(request);
-        QString t = reply->header(QNetworkRequest::LastModifiedHeader).toString();
+        reply->header(QNetworkRequest::LastModifiedHeader).toString();
 
 }
