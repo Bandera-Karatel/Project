@@ -5,15 +5,22 @@ Thread::Thread(QObject *parent) :
 {
 }
 
-void Thread::run()
+Thread::Thread(Roster * roster,QObject *parent) :
+    QThread(parent)
 {
-
+    this->roster = roster;
 }
 
-void Thread::getLastModified(QUrl url)
+void Thread::run()
+{
+    //if(compareLastModified)emit finisfed return
+    //donloadfile
+}
+
+QString Thread::getLastModified(QUrl url)
 {
         QNetworkRequest request(url);
         QNetworkReply *reply = manager.head(request);
-        reply->header(QNetworkRequest::LastModifiedHeader).toString();
+        return reply->header(QNetworkRequest::LastModifiedHeader).toString();
 
 }

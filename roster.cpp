@@ -3,6 +3,7 @@
 Roster::Roster() : QObject()
 {
     timer = new QTimer();
+    connect(timer,SIGNAL(timeout()),this,SLOT(TimerTimeout()));
 }
 
 void Roster::setU(QString url)
@@ -52,5 +53,5 @@ void Roster::TimerStart()
 
 void Roster::TimerTimeout()
 {
-    emit timeout();
+    emit timeout(this);
 }

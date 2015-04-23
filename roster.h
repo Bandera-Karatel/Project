@@ -38,7 +38,7 @@ private slots:
     void TimerTimeout();
 
 signals:
-    void timeout();
+    void timeout(Roster*);
 };
 
 #endif // Q_LIST_H
