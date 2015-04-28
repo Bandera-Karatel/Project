@@ -26,6 +26,11 @@ void Roster::setT(int time)
     this->Time = time;
 }
 
+void Roster::setL(QString lastmodified)
+{
+    this->LastModified = lastmodified;
+}
+
 QString Roster::getU()
 {
     return this->Url;
@@ -44,6 +49,11 @@ QString Roster::getA()
 int Roster::getT()
 {
     return this->Time;
+}
+
+QString Roster::getL()
+{
+    return this->LastModified;
 }
 
 void Roster::TimerStart()

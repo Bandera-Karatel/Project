@@ -26,10 +26,12 @@ public:
     void setN(QString);
     void setA(QString);
     void setT(int);
+    void setL(QString);
     QString getU();
     QString getN();
     QString getA();
     int getT();
+    QString getL();
 
 public slots:
     void TimerStart();
