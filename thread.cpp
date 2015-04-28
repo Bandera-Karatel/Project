@@ -14,10 +14,10 @@ Thread::Thread(Roster * roster,QObject *parent) :
 void Thread::run()
 {
     if(compareLastModified()){
-        emit finisfed();
+        emit finished();
         return;
-
     }
+    donloadFile();
 }
 
 QString Thread::getLastModified(QUrl url)
@@ -39,10 +39,11 @@ bool Thread::compareLastModified()
 
 void Thread::donloadFile()
 {
-    if(!compareLastModified()){
-
+    if(compareLastModified()){
+    emit finished();
+    return;
     }
-    QString saveFilePath = QString("C:/Images/" + this->roster->getN());
+    QString saveFilePath = QString("C:/" + this->roster->getN());
     QNetworkRequest request(this->roster->getU());
     QNetworkReply *reply = manager.get(request);
     file = new QFile;
@@ -50,4 +51,9 @@ void Thread::donloadFile()
     file->open(QIODevice::WriteOnly);
     file->write(reply->readAll());
     file->close();
+}
+
+void Thread::isFinished()
+{
+    emit finished();
 }

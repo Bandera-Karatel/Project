@@ -21,9 +21,10 @@ public:
     QString getLastModified(QUrl);
     bool compareLastModified();
     void donloadFile();
+    void isFinished();
 
 signals:
-    void finisfed();
+    void finished();
 
 public slots:
 

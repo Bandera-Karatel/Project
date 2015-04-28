@@ -28,7 +28,7 @@ void ProcessingManager::updatePool()
     Roster *roster = queue.dequeue();
     Thread *thread = new Thread(roster);
     pool.append(thread);
-    //TODO connect signals and slots
+
     thread->start();
     updatePool();
 

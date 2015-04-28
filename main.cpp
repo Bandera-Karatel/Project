@@ -2,6 +2,8 @@
 #include <QApplication>
 #include "form_step.h"
 #include "form_add.h"
+#include "processingmanager.h"
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
