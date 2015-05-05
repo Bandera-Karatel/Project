@@ -32,28 +32,41 @@ bool Thread::compareLastModified()
 {
     QString lastmodified = this->getLastModified(this->roster->getU());
     if(lastmodified == this->roster->getL()){
-        this->roster->setL(lastmodified);
         return true;
     }
+     this->roster->setL(lastmodified);
+    return false;
 }
 
 void Thread::donloadFile()
 {
+
     if(compareLastModified()){
     emit finished();
     return;
     }
     QString saveFilePath = QString("C:/" + this->roster->getN());
     QNetworkRequest request(this->roster->getU());
-    QNetworkReply *reply = manager.get(request);
+    reply = manager.get(request);
     file = new QFile;
     file->setFileName(saveFilePath);
     file->open(QIODevice::WriteOnly);
-    file->write(reply->readAll());
-    file->close();
+    bytesSaved = 0;
+    connect(reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(downloadProgress(qint64,qint64)));
+    connect(reply,SIGNAL(finished()),this,SLOT(isFinished()));
+}
+
+void Thread::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
+{
+    qint64 byteToSave = bytesReceived - bytesSaved;
+    if (byteToSave > 0) {
+        file->write(reply->read(byteToSave));
+        bytesSaved += byteToSave;
+    }
 }
 
 void Thread::isFinished()
 {
+    file->close();
     emit finished();
 }

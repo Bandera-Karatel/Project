@@ -14,7 +14,9 @@ void ProcessingManager::ProcesRoster(Roster * roster)
 
 void ProcessingManager::RemoveRoster()
 {
-
+    Thread *thread = (Thread *)sender();
+    pool.removeOne(thread);
+    thread->deleteLater();
 }
 
 void ProcessingManager::updatePool()
@@ -27,10 +29,8 @@ void ProcessingManager::updatePool()
     }
     Roster *roster = queue.dequeue();
     Thread *thread = new Thread(roster);
+    connect(thread,SIGNAL(finished()),this,SLOT(RemoveRoster()));
     pool.append(thread);
-
     thread->start();
     updatePool();
-
-
 }

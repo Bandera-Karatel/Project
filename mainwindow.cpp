@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     model = new ListModel();
     ui->tableView->setModel(model);
+
+    processingmanager = new ProcessingManager();
 }
 
 MainWindow::~MainWindow()
@@ -29,6 +31,7 @@ void MainWindow::Slot(Roster *Data)
 {
     model->listAdd(Data);
     Data->TimerStart();
+    connect(Data,SIGNAL(timeout(Roster*)),processingmanager,SLOT(ProcesRoster(Roster*)));
 }
 
 

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 #include "listmodel.h"
 #include <QMainWindow>
+#include "processingmanager.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +19,7 @@ public:
 private:
     Ui::MainWindow *ui;
     ListModel *model;
+    ProcessingManager *processingmanager;
 
 
 private slots:

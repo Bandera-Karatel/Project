@@ -14,6 +14,8 @@ class Thread : public QThread
     Roster *roster;
     QNetworkAccessManager manager;
     QFile *file;
+    QNetworkReply *reply;
+    qint64 bytesSaved;
 public:
     explicit Thread(QObject *parent = 0);
     explicit Thread(Roster *,QObject *parent = 0);
@@ -21,13 +23,16 @@ public:
     QString getLastModified(QUrl);
     bool compareLastModified();
     void donloadFile();
-    void isFinished();
+
 
 signals:
     void finished();
 
 public slots:
 
+protected slots:
+    void isFinished();
+    void downloadProgress(qint64,qint64);
 };
 
 #endif // THREAD_H
