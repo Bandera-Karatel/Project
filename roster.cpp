@@ -56,6 +56,7 @@ QString Roster::getL()
     return this->LastModified;
 }
 
+
 void Roster::TimerStart()
 {
     this->timer->start(this->Time*60000);

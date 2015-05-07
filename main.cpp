@@ -15,5 +15,7 @@ int main(int argc, char *argv[])
     QObject::connect(&f,SIGNAL(Hide_Add()),&f,SLOT(hide()));
     QObject::connect(&w,SIGNAL(Shov_Step()),&f2,SLOT(show()));
     QObject::connect(&f,SIGNAL(Add(Roster*)),&w,SLOT(Slot(Roster*)));
+    QObject::connect(&f2,SIGNAL(Hide_Step()),&f2,SLOT(hide()));
+    QObject::connect(&f2,SIGNAL(Hide_Step_Save(int)),w.processingmanager,SLOT(poolSizeAdd(int)));
     return a.exec();
 }

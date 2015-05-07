@@ -12,3 +12,17 @@ Form_Step::~Form_Step()
 {
     delete ui;
 }
+
+void Form_Step::on_pushButton_clicked()
+{
+
+    int poolSize = ui->spinBox->value();
+    emit Hide_Step_Save(poolSize);
+    emit Hide_Step();
+}
+
+void Form_Step::on_pushButton_2_clicked()
+{
+    emit Hide_Step();
+
+}

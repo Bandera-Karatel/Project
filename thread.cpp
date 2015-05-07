@@ -45,7 +45,7 @@ void Thread::donloadFile()
     emit finished();
     return;
     }
-    QString saveFilePath = QString("C:/" + this->roster->getN());
+    QString saveFilePath = QString(this->roster->getA() + QString("/") + this->roster->getN());
     QNetworkRequest request(this->roster->getU());
     reply = manager.get(request);
     file = new QFile;

@@ -8,7 +8,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     model = new ListModel();
     ui->tableView->setModel(model);
-
     processingmanager = new ProcessingManager();
 }
 

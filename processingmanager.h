@@ -15,6 +15,8 @@ class ProcessingManager : public QObject
     int poolSize;
 public:
     explicit ProcessingManager(QObject *parent = 0);
+    void setPS(QString);
+    QString getPS();
 
 protected:
     void updatePool();
@@ -22,6 +24,7 @@ protected:
 signals:
 
 public slots:
+    void poolSizeAdd(int);
     void ProcesRoster(Roster*);
     void RemoveRoster();
 };

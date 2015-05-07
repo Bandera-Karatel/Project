@@ -19,6 +19,7 @@ public:
 private:
     Ui::MainWindow *ui;
     ListModel *model;
+public:
     ProcessingManager *processingmanager;
 
 

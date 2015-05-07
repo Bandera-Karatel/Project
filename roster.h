@@ -16,7 +16,7 @@ private:
    int Time;
    QTimer *timer;
    QString LastModified;
-
+   QString Path;
 
 
 public:

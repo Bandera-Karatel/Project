@@ -3,8 +3,14 @@
 ProcessingManager::ProcessingManager(QObject *parent) :
     QObject(parent)
 {
-    poolSize=2;
+
 }
+
+void ProcessingManager::poolSizeAdd(int poolSize)
+{
+    this->poolSize = poolSize;
+}
+
 
 void ProcessingManager::ProcesRoster(Roster * roster)
 {
