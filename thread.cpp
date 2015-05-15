@@ -14,7 +14,7 @@ Thread::Thread(Roster * roster,QObject *parent) :
 void Thread::run()
 {
     if(compareLastModified()){
-        emit finished();
+        emit finish();
         return;
     }
     donloadFile();
@@ -23,14 +23,23 @@ void Thread::run()
 QString Thread::getLastModified(QUrl url)
 {
         QNetworkRequest request(url);
-        QNetworkReply *reply = manager.head(request);
-        return reply->header(QNetworkRequest::LastModifiedHeader).toString();
+        reply = manager.head(request);
+        connect(reply,SIGNAL(finish()),this,SLOT(lastModified()));
+}
 
+void Thread::lastModified()
+{
+    if(compareLastModified()){
+    emit finish();
+    return;
+    }
+    this->donloadFile();
 }
 
 bool Thread::compareLastModified()
 {
-    QString lastmodified = this->getLastModified(this->roster->getU());
+
+    QString lastmodified = reply->header(QNetworkRequest::LastModifiedHeader).toString();
     if(lastmodified == this->roster->getL()){
         return true;
     }
@@ -40,11 +49,6 @@ bool Thread::compareLastModified()
 
 void Thread::donloadFile()
 {
-
-    if(compareLastModified()){
-    emit finished();
-    return;
-    }
     QString saveFilePath = QString(this->roster->getA() + QString("/") + this->roster->getN());
     QNetworkRequest request(this->roster->getU());
     reply = manager.get(request);
@@ -53,7 +57,7 @@ void Thread::donloadFile()
     file->open(QIODevice::WriteOnly);
     bytesSaved = 0;
     connect(reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(downloadProgress(qint64,qint64)));
-    connect(reply,SIGNAL(finished()),this,SLOT(isFinished()));
+    connect(reply,SIGNAL(finish()),this,SLOT(isFinished()));
 }
 
 void Thread::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
@@ -68,5 +72,5 @@ void Thread::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 void Thread::isFinished()
 {
     file->close();
-    emit finished();
+    emit finish();
 }
