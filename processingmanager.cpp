@@ -35,7 +35,7 @@ void ProcessingManager::updatePool()
     }
     Roster *roster = queue.dequeue();
     Thread *thread = new Thread(roster);
-    connect(thread,SIGNAL(finished()),this,SLOT(RemoveRoster()));
+    connect(thread,SIGNAL(finish()),this,SLOT(RemoveRoster()));
     pool.append(thread);
     thread->start();
     updatePool();
