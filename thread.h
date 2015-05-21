@@ -20,7 +20,6 @@ public:
     explicit Thread(QObject *parent = 0);
     explicit Thread(Roster *,QObject *parent = 0);
     void run();
-    QString getLastModified(QUrl);
     bool compareLastModified();
     void donloadFile();
     void lastModified();

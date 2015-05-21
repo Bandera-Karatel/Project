@@ -15,8 +15,9 @@ Form_Step::~Form_Step()
 
 void Form_Step::on_pushButton_clicked()
 {
-
-    int poolSize = ui->spinBox->value();
+    int poolSize;
+    QSpinBox *Box = ui->spinBox;
+    poolSize = Box->value();
     emit Hide_Step_Save(poolSize);
     emit Hide_Step();
 }

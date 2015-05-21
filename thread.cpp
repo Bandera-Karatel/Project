@@ -13,22 +13,15 @@ Thread::Thread(Roster * roster,QObject *parent) :
 
 void Thread::run()
 {
-    if(compareLastModified()){
-        emit finish();
-        return;
-    }
-    donloadFile();
+    QNetworkRequest request(roster->getU());
+    reply = manager.head(request);
+    connect(reply,SIGNAL(finish()),this,SLOT(lastModified()));
 }
 
-QString Thread::getLastModified(QUrl url)
-{
-        QNetworkRequest request(url);
-        reply = manager.head(request);
-        connect(reply,SIGNAL(finish()),this,SLOT(lastModified()));
-}
+
 
 void Thread::lastModified()
-{
+{  
     if(compareLastModified()){
     emit finish();
     return;
@@ -38,7 +31,6 @@ void Thread::lastModified()
 
 bool Thread::compareLastModified()
 {
-
     QString lastmodified = reply->header(QNetworkRequest::LastModifiedHeader).toString();
     if(lastmodified == this->roster->getL()){
         return true;

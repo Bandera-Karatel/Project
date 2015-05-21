@@ -31,7 +31,7 @@ void MainWindow::Slot(Roster *Data)
     model->listAdd(Data);
     Data->TimerStart();
     processingmanager->ProcesRoster(Data);
-    connect(Data,SIGNAL(timeout(Roster*)),processingmanager,SLOT(ProcesRoster(Roster*)));
+    //connect(Data,SIGNAL(timeout(Roster*)),processingmanager,SLOT(ProcesRoster(Roster*)));
 }
 
 
