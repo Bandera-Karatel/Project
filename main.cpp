@@ -12,11 +12,11 @@ int main(int argc, char *argv[])
     Form_Add f;
     Form_Step f2;
     w.show();
-    QNetworkProxy proxy;
+   /* QNetworkProxy proxy;
     proxy.setType(QNetworkProxy::HttpProxy);
     proxy.setHostName("proxy.cic");
     proxy.setPort(3128);
-    QNetworkProxy::setApplicationProxy(proxy);
+    QNetworkProxy::setApplicationProxy(proxy);*/
     QObject::connect(&w,SIGNAL(Shov_Add()),&f,SLOT(show()));
     QObject::connect(&f,SIGNAL(Hide_Add()),&f,SLOT(hide()));
     QObject::connect(&w,SIGNAL(Shov_Step()),&f2,SLOT(show()));

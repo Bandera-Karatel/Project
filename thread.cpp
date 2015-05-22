@@ -8,13 +8,14 @@ Thread::Thread(QObject *parent) :
 Thread::Thread(Roster * roster,QObject *parent) :
     QThread(parent)
 {
+    manager = new QNetworkAccessManager();
     this->roster = roster;
 }
 
 void Thread::run()
 {
     QNetworkRequest request(roster->getU());
-    reply = manager.head(request);
+    reply = manager->head(request);
     connect(reply,SIGNAL(finished()),this,SLOT(lastModified()));
 }
 
@@ -42,7 +43,7 @@ void Thread::donloadFile()
     QString saveFilePath = QString(this->roster->getA() + QString("/") + this->roster->getN());
     QNetworkRequest request(this->roster->getU());
     QNetworkReply *reply;
-    reply = manager.get(request);
+    reply = manager->get(request);
     file = new QFile;
     file->setFileName(saveFilePath);
     file->open(QIODevice::WriteOnly);

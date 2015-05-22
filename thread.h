@@ -12,7 +12,7 @@ class Thread : public QThread
 {
     Q_OBJECT
     Roster *roster;
-    QNetworkAccessManager manager;
+    QNetworkAccessManager *manager;
     QFile *file;
     QNetworkReply *reply;
     qint64 bytesSaved;
