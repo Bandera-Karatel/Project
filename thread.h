@@ -19,20 +19,21 @@ class Thread : public QThread
 public:
     explicit Thread(QObject *parent = 0);
     explicit Thread(Roster *,QObject *parent = 0);
-    void run();
+    void run1();
     bool compareLastModified();
-    void donloadFile();
+
 
 
 signals:
     void finish();
 
 public slots:
-
+    void lastModified();
 protected slots:
     void isFinished();
+    void donloadFile();
     void downloadProgress(qint64,qint64);
-    void lastModified();
+
 };
 
 #endif // THREAD_H

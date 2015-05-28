@@ -11,12 +11,12 @@ Thread::Thread(Roster * roster,QObject *parent) :
     this->roster = roster;
 }
 
-void Thread::run()
+void Thread::run1()
 {
     manager = new QNetworkAccessManager();
     QNetworkRequest request(roster->getU());
     reply = manager->head(request);
-    connect(reply,SIGNAL(finished()),this,SLOT(lastModified()));
+    connect(reply,SIGNAL(finished()),this,SLOT(donloadFile()));
 }
 
 void Thread::lastModified()
@@ -64,5 +64,5 @@ void Thread::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 void Thread::isFinished()
 {
     file->close();
-    emit finish();
+   // emit finish();
 }

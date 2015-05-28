@@ -14,8 +14,11 @@ void ProcessingManager::poolSizeAdd(int poolSize)
 
 void ProcessingManager::ProcesRoster(Roster * roster)
 {
-    queue.enqueue(roster);
-    updatePool();
+    Thread *thread = new Thread(roster);
+    thread->run1();
+    /*queue.enqueue(roster);
+    updatePool();*/
+
 }
 
 void ProcessingManager::RemoveRoster()
