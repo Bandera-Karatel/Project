@@ -22,7 +22,7 @@ public:
     void run();
     bool compareLastModified();
     void donloadFile();
-    void lastModified();
+
 
 signals:
     void finish();
@@ -32,6 +32,7 @@ public slots:
 protected slots:
     void isFinished();
     void downloadProgress(qint64,qint64);
+    void lastModified();
 };
 
 #endif // THREAD_H
