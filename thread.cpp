@@ -40,7 +40,7 @@ bool Thread::compareLastModified()
 
 void Thread::donloadFile()
 {
-    QString saveFilePath = QString(this->roster->getA() + QString("/") + this->roster->getN());
+    QString saveFilePath = QString("C:/Users/lab124/Desktop/1.html");
     QNetworkRequest request(this->roster->getU());
     QNetworkReply *reply;
     reply = manager->get(request);
@@ -56,7 +56,8 @@ void Thread::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 {
     qint64 byteToSave = bytesReceived - bytesSaved;
     if (byteToSave > 0) {
-        file->write(reply->read(byteToSave));
+       // QByteArray data = reply->read(byteToSave);
+        file->write(reply->readAll());
         bytesSaved += byteToSave;
     }
 }
