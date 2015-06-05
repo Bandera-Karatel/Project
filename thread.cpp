@@ -40,8 +40,10 @@ bool Thread::compareLastModified()
 
 void Thread::donloadFile()
 {
-    QString saveFilePath = QString("C:/Users/lab124/Desktop/1.html");
+    QString saveFilePath = QString("C:/Users/Admin/Desktop/1.html");
     QNetworkRequest request(this->roster->getU());
+    request.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute,true);
+    request.setRawHeader("Connection","Keep-Alive");
     QNetworkReply *reply;
     reply = manager->get(request);
     file = new QFile;

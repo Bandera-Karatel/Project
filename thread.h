@@ -33,6 +33,7 @@ protected slots:
     void isFinished();
     void donloadFile();
     void downloadProgress(qint64,qint64);
+    //void readyRead();
 
 };
 
